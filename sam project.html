@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samarth Rokade | Projects & Performances</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Consistent with main portfolio styles */
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --light-color: #E8F5E9;
+            --dark-color: #1B5E20;
+            --accent-color: #FFC107;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Back to Portfolio Button */
+        .back-btn {
+            margin: 100px 0 30px;
+            display: inline-block;
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-media {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-media img,
+        .project-media video,
+        .project-media iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-media img,
+        .project-card:hover .project-media video {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .project-info .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .project-info p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .project-tag {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-links a {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-links i {
+            margin-right: 5px;
+        }
+        
+        /* Music Performances Section */
+        .performances-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .performance-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .performance-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .performance-media {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .performance-media img,
+        .performance-media video,
+        .performance-media iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .performance-card:hover .performance-media img,
+        .performance-card:hover .performance-media video {
+            transform: scale(1.1);
+        }
+        
+        .performance-info {
+            padding: 20px;
+        }
+        
+        .performance-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .performance-info .performance-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .performance-info p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .performance-instruments {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .performance-instrument {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Upload Section */
+        #upload {
+            background-color: white;
+            margin-top: 60px;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .upload-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .upload-container h2 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        
+        .upload-container p {
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group.file-upload {
+            border: 2px dashed #ccc;
+            padding: 30px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group.file-upload:hover {
+            border-color: var(--primary-color);
+            background-color: var(--light-color);
+        }
+        
+        .file-upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #555;
+        }
+        
+        .file-upload-label i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .back-btn {
+                margin: 80px 0 20px;
+            }
+            
+            .projects-container,
+            .performances-container {
+                grid-template-columns: 1fr;
+            }
+            
+            #upload {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Samarth<span>Rokade</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#education">Education</a></li>
+                    <li><a href="index.html#achievements">Achievements</a></li>
+                    <li><a href="index.html#music">Music</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <a href="file:///D:/OneDrive/Desktop/samarth/html/sam.html" class="btn btn-outline back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-title">
+                <h2>My Projects</h2>
+                <p>Technical projects and coding work</p>
+            </div>
+            
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="D:\OneDrive\Desktop\samarth\html\images\arduiino 2.jpg" alt="Engineering Calculator">
+                    </div>
+                    <div class="project-info">
+                        <h3>Arduino based mobile control car</h3>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Nov 2023</span>
+                            <span><i class="fas fa-code"></i> Python</span>
+                        </div>
+                        <p>An Arduino-based mobile-controlled car uses Bluetooth to receive commands from a smartphone, allowing wireless navigation. It integrates motors, a motor driver, and sensors for smooth movement and control.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Engineering</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">GUI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80" alt="Portfolio Website">
+                    </div>
+                    <div class="project-info">
+                        <h3>Personal Portfolio Website</h3>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Oct 2023</span>
+                            <span><i class="fas fa-code"></i> HTML/CSS/JS</span>
+                        </div>
+                        <p>A responsive personal portfolio website showcasing my skills, projects, and musical performances with clean design and smooth animations.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">Responsive</span>
+                            <span class="project-tag">UI/UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="file:///D:/OneDrive/Desktop/samarth/html/sam.html"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="btn">Load More Projects</a>
+            </div>
+        </section>
+        
+        <!-- Music Performances Section -->
+        <section id="performances">
+            <div class="section-title">
+                <h2>Music Performances</h2>
+                <p>My musical journey and performances</p>
+            </div>
+            
+            <div class="performances-container">
+                <!-- Performance 1 -->
+                <div class="performance-card">
+                    <div class="performance-media">
+                        <iframe src="D:\OneDrive\Desktop\samarth\html\images\cultural fest.jpg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="performance-info">
+                        <h3>College Cultural Fest 2025</h3>
+                        <div class="performance-meta">
+                            <span><i class="far fa-calendar"></i> Feb 2023</span>
+                            <span><i class="fas fa-map-marker-alt"></i> University Auditorium</span>
+                        </div>
+                        <p>Performed a captivating musical piece at the College Cultural Fest 2025, showcasing instrumental talent and stage presence. The performance received enthusiastic applause and highlighted creative expression.</p>
+                        <div class="performance-instruments">
+                            <span class="performance-instrument">Piano</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-youtube"></i> Full Performance</a>
+                            <a href="#"><i class="fas fa-music"></i> Audio Track</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Performance 2 -->
+                <div class="performance-card">
+                    <div class="performance-media">
+                        <img src="D:\OneDrive\Desktop\samarth\html\images\music5.jpg.jpg" alt="Piano Performance">
+                    </div>
+                    <div class="performance-info">
+                        <h3>flute performance</h3>
+                        <div class="performance-meta">
+                            <span><i class="far fa-calendar"></i> Dec 2022</span>
+                        </div>
+                        <p>Delivered a soulful flute solo performance at the College Cultural Fest 2024, mesmerizing the audience with melodic precision. The act reflected a deep passion for music and strong command over the instrument.</p>
+                        <div class="performance-instruments">
+                            <span class="performance-instrument">Flute</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-instagram"></i> Performance Clip</a>
+                            <a href="#"><i class="fas fa-headphones"></i> Listen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Performance 3 -->
+                <div class="performance-card">
+                    <div class="performance-media">
+                        <img src="D:\OneDrive\Desktop\samarth\html\images\music4.jpg.jpg" alt="Piano Performance">
+                            <source src="D:\OneDrive\Desktop\samarth\html\images\music4.jpg.jpg" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="performance-info">
+                        <h3>Fusion Band Live Session</h3>
+                        <div class="performance-meta">
+                            <span><i class="far fa-calendar"></i>  2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i>Firodiya</span>
+                        </div>
+                        <p>Experimental fusion performance combining traditional Indian instruments with electronic elements, featuring my original composition.</p>
+                        <div class="performance-instruments">
+                            <span class="performance-instrument">Clarinet</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-spotify"></i> Stream</a>
+                            <a href="#"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="btn">Load More Performances</a>
+            </div>
+        </section>
+        
+        <!-- Upload Section -->
+        <section id="upload">
+            <div class="upload-container">
+                <h2>Share Your Thoughts</h2>
+                <p>Have feedback on my projects or performances? Want to collaborate on something? Send me a message!</p>
+                
+                <form class="upload-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category">
+                            <option value="project">Project Feedback</option>
+                            <option value="performance">Performance Feedback</option>
+                            <option value="collab">Collaboration Request</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <div class="form-group file-upload">
+                        <label for="file-upload" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Upload Files (Optional)</span>
+                            <span style="font-size: 0.8rem; margin-top: 5px;">Supports images, videos, audio, documents</span>
+                        </label>
+                        <input type="file" id="file-upload" style="display: none;" multiple>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Samarth Rokade. All rights reserved.</p>
+            <p>Engineering Student | Programmer | Musician</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // File upload interaction
+        const fileUpload = document.querySelector('.file-upload');
+        const fileInput = document.getElementById('file-upload');
+        
+        fileUpload.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileUpload.style.borderColor = var(--primary-color);
+                fileUpload.style.backgroundColor = 'var(--light-color)';
+                const label = fileUpload.querySelector('.file-upload-label span:first-of-type');
+                label.textContent = `${fileInput.files.length} file(s) selected`;
+            }
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            // Add shadow to header when scrolling
+            if (scrollPosition > 50) {
+                document.querySelector('header').style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                document.querySelector('header').style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

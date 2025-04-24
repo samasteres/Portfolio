@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samarth Rokade | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --light-color: #E8F5E9;
+            --dark-color: #1B5E20;
+            --accent-color: #FFC107;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #E8F5E9 0%, #A5D6A7 100%);
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .hero-content .tagline {
+            font-style: italic;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .social-icons {
+            margin-top: 30px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+        
+        /* About Section */
+        #about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .skills {
+            margin-top: 30px;
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        /* Projects Section */
+        #projects {
+            background-color: #f9f9f9;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .project-info p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .project-links a {
+            margin-right: 15px;
+            font-weight: 600;
+        }
+        
+        /* Education Section */
+        #education {
+            background-color: white;
+        }
+        
+        .education-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .education-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .education-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .education-card h4 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        
+        .education-card p {
+            color: #555;
+            margin-bottom: 5px;
+        }
+        
+        /* Achievements Section */
+        #achievements {
+            background-color: #f9f9f9;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .achievement-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .achievement-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .achievement-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .achievement-card p {
+            color: #555;
+        }
+        
+        /* Music Section */
+        #music {
+            background-color: white;
+        }
+        
+        .music-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .music-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .music-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .music-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .instruments {
+            margin-top: 20px;
+        }
+        
+        .instrument-item {
+            display: inline-block;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .music-img {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .music-img img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+         /* Personal Goals List */
+         .goals-list {
+            list-style-type: none;
+        }
+        
+        .goals-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .goals-list li:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .goals-list i {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        
+        /* Contact Section */
+        #contact {
+            background-color: #f9f9f9;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Samarth<span>Rokade</span></div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#music">Music</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span>Samarth Rokade</span></h1>
+                <p>First Year Mechanical Engineering Student | Musician</p>
+                <p class="tagline">Bridging technology and creativity through engineering and music</p>
+                <a href="file:///D:/OneDrive/Desktop/samarth/html/sam%20project.html" class="btn">Explore My Journey</a>
+                <div class="social-icons">
+                    <a href="https://github.com/samasteres"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/samarth-rokade-77a252258/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/samasteres/"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="D:\OneDrive\Desktop\samarth\html\images\WhatsApp Image 2025-04-16 at 18.11.40_f8a7fc87.jpg" alt="Samarth Rokade">
+                </div>
+                <div class="about-text">
+                    <h3>Mechanical Engineering Student & Musician</h3>
+                    <p>I'm currently in my first year of Mechanical Engineering, where I'm developing a strong foundation in engineering principles while pursuing my passion for programming and technology.</p>
+                    <p>When I'm not studying or coding, you can find me composing music, playing various instruments, or exploring the intersection of technology and creative arts.</p>
+                    
+                    <div class="skills">
+                        <h3>My Technical Skills</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Python</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>C++</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>HTML/CSS</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="education-container">
+                <div class="education-card">
+                    <h3>2024 - Present</h3>
+                    <h4>Bachelor of Technology in Mechanical Engineering</h4>
+                    <p>First Year Student</p>
+                    <p>Expected Graduation: 2028</p>
+                    <p>Relevant Coursework: Engineering Mathematics, Basic Mechanical Engineering, Engineering Graphics</p>
+                </div>
+                
+                <div class="education-card">
+                    <h3>2024</h3>
+                    <h4>Higher Secondary Education (12th Grade)</h4>
+                    <p>Science Stream (PCM)</p>
+                    <p>Percentage: 85.80%</p>
+                    <p>Activities: Science Club, Robotics Workshop Participant</p>
+                </div>
+                
+                <div class="education-card">
+                    <h3>2022</h3>
+                    <h4>Secondary Education (10th Grade)</h4>
+                    <p>Percentage: 86.81%</p>
+                    <p>Achievements: School Topper in Mathematics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certifications & Achievements</h2>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Cisco Python Essentials 1</h3>
+                    <p>Completed comprehensive Python programming certification covering fundamentals and basic syntax</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Cisco Python Essentials 2</h3>
+                    <p>Advanced Python certification focusing on OOP concepts, data structures, and file handling</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>NASSCOM Certification</h3>
+                    <p>Recognized for skills in emerging technologies and programming fundamentals</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Music Achievements</h3>
+                    <p>Performed at various school and college events as lead instrumentalist</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Arduino based mobile cotrolled car</h3>
+                    <p>Robotics project</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="about-text" style="margin-top: 50px;">
+        <h3>Career Objectives</h3>
+        <p>To become a mechanical engineer who integrates programming skills to develop innovative solutions in automation and robotics, while continuing to pursue music as a creative outlet and means of personal expression.</p>
+        <p>Short-term goal: To excel in my undergraduate studies while building a strong portfolio of technical projects and musical compositions.</p>
+        <p>Long-term vision: To be a great musician and singer( but i can't sing ) and want everyone to know me for my  art.</p>
+    </div>
+</div>
+</section>
+    
+<div class="about-text" style="margin-top: 50px;">
+    <h3>Personal Goals</h3>
+    <ul class="goals-list">
+        <li><i class="fas fa-check-circle"></i> Develop expertise in mechanical design software (AutoCAD, SolidWorks)</li>
+        <li><i class="fas fa-check-circle"></i> Master Python for engineering applications and data analysis</li>
+        <li><i class="fas fa-check-circle"></i> Complete a robotics project combining mechanical and programming skills</li>
+        <li><i class="fas fa-check-circle"></i> Record and release original music compositions</li>
+        <li><i class="fas fa-check-circle"></i> Contribute to open-source engineering projects</li>
+    </ul>
+</div>
+</div>
+</section>
+
+    <!-- Music Section -->
+    <section id="music">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Musical Journey</h2>
+            </div>
+            <div class="music-content">
+                <div class="music-text">
+                    <h3>Passionate Musician</h3>
+                    <p>Music has been an integral part of my life since childhood. I find it to be the perfect balance to my technical studies, allowing me to express creativity and emotion.</p>
+                    <p>I enjoy composing original pieces and collaborating with other musicians to create unique sounds. My musical influences range from classical to contemporary genres.</p>
+                    
+                    <div class="instruments">
+                        <h4>Instruments I Play:</h4>
+                        <span class="instrument-item">Guitar</span>
+                        <span class="instrument-item">Piano</span>
+                        <span class="instrument-item">Harmonica</span>
+                        <span class="instrument-item">Flute</span>
+                    </div>
+                    
+                    <p style="margin-top: 20px;">Currently exploring how to integrate my programming skills with music production through digital audio workstations and music programming languages.</p>
+                </div>
+                <div class="music-img">
+                    <img src="D:\OneDrive\Desktop\samarth\html\images\WhatsApp Image 2025-04-14 at 22.01.25_44d73152.jpg" alt="Musical Instruments">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Feel free to reach out for collaborations, questions about my projects, or just to chat about music and technology!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>202401090132@mitaoe.ac.in</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 85307 47394</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Pune, Maharashtra, India</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Samarth Rokade. All rights reserved.</p>
+            <p>Engineering Student | Programmer | Musician</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            // Add shadow to header when scrolling
+            if (scrollPosition > 50) {
+                document.querySelector('header').style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                document.querySelector('header').style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
